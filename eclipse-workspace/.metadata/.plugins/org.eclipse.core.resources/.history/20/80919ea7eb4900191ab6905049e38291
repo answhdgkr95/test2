@@ -1,0 +1,116 @@
+package First;
+
+import java.awt.image.BufferedImage;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.util.Scanner;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+
+public class Frame1to1 extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		int localX=0;
+		int localY=0;
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Frame1to1 frame = new Frame1to1();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		Scanner sc = new Scanner(System.in);
+		BufferedImage image = loadImage("D:\\123.png.");  
+
+		int x = image.getWidth(null);  
+		int y = image.getHeight(null);  
+		
+		public void mouseClicked(MouseEvent e) {
+			 if(e.getSource() == this) {   //마우스를 움직이면
+
+				   localX = e.getX();    //x 좌표의 값을 불러와
+
+				   localY = e.getY();    //y 좌표의 값을 불러와
+
+				  }
+		}
+
+
+		Color color = new Color(image.getRGB(localX, localY));   //좌표
+
+		int red = color.getRed();
+
+		int blue = color.getBlue();
+
+		int green = color.getGreen();
+
+		int alpha = color.getBlue();
+
+
+		System.out.println("red : " + red);
+
+		System.out.println("blue : " + blue);
+
+		System.out.println("green : " + green);
+
+		System.out.println("alpha : " + alpha);
+
+		System.out.println("x : " + x+ ", y : " + y);
+
+	}
+
+
+
+
+public static BufferedImage loadImage(String url) {  
+
+    BufferedImage image = null;  
+
+    try {  
+
+        image = ImageIO.read(new File(url));  
+
+    } catch (IOException e) {  
+
+        e.printStackTrace();  
+
+    }  
+
+    return image;  
+    }
+
+	/**
+	 * Create the frame.
+	 */
+	public Frame1to1() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 766, 573);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon("D:\\123.png"));
+		contentPane.add(label, BorderLayout.CENTER);
+	}
+
+}

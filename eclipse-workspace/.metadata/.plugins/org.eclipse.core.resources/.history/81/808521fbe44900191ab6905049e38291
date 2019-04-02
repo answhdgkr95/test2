@@ -1,0 +1,63 @@
+package First;
+import java.awt.image.BufferedImage;
+import java.awt.Image;
+import java.awt.Color;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BufferedImage image = loadImage("...이미지 file path....");  
+
+		int x = image.getWidth(null);  
+
+		int y = image.getHeight(null);  
+
+		
+
+		Color color = new Color(image.getRGB(x-1, y-1));   //좌표 선택
+
+		int red = color.getRed();
+
+		int blue = color.getBlue();
+
+		int green = color.getGreen();
+
+		int alpha = color.getBlue();
+
+		
+
+		System.out.println("red : " + red);
+
+		System.out.println("blue : " + blue);
+
+		System.out.println("green : " + green);
+
+		System.out.println("alpha : " + alpha);
+
+		System.out.println("x : " + x+ ", y : " + y);
+
+
+
+
+
+public static BufferedImage loadImage(String url) {  
+
+    BufferedImage image = null;  
+
+    try {  
+
+        image = ImageIO.read(new File(url));  
+
+    } catch (IOException e) {  
+
+        e.printStackTrace();  
+
+    }  
+
+    return image;  
+
+}
+	}
+
+}

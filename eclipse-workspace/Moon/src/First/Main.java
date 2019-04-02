@@ -1,0 +1,69 @@
+package First;
+
+import java.awt.image.BufferedImage;
+import java.awt.Color;
+import java.awt.Image;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.util.Scanner;
+
+public class Main{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		BufferedImage image = loadImage("D:\\123.png.");  
+
+		int x = image.getWidth(null);  
+
+		int y = image.getHeight(null);  
+
+		System.out.println("x축 좌표 입력 : ");
+		int localX=sc.nextInt();
+		System.out.println("Y축 좌표 입력 : ");
+		int localY = sc.nextInt();
+		if(localX<x&&localY<y) {
+
+		Color color = new Color(image.getRGB(localX, localY));   //좌표
+
+		int red = color.getRed();
+
+		int blue = color.getBlue();
+
+		int green = color.getGreen();
+
+		int alpha = color.getBlue();
+
+
+		System.out.println("red : " + red);
+
+		System.out.println("blue : " + blue);
+
+		System.out.println("green : " + green);
+
+		System.out.println("alpha : " + alpha);
+
+		System.out.println("x : " + x+ ", y : " + y);
+		}
+		else System.out.println("값이 맞지 않습니다.");
+	}
+
+
+
+
+public static BufferedImage loadImage(String url) {  
+
+    BufferedImage image = null;  
+
+    try {  
+
+        image = ImageIO.read(new File(url));  
+
+    } catch (IOException e) {  
+
+        e.printStackTrace();  
+
+    }  
+
+    return image;  
+    }
+}

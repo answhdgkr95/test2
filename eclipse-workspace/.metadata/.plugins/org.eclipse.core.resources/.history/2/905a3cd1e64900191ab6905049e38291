@@ -1,0 +1,61 @@
+package First;
+
+import java.awt.image.BufferedImage;
+import java.awt.Color;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.io.File;
+
+public class Main {
+	public static void main(String[] args) {
+
+		BufferedImage image = loadImage("D:\\123.png.");  
+
+		int x = image.getWidth(null);  
+
+		int y = image.getHeight(null);  
+
+		
+
+		Color color = new Color(image.getRGB(x-200, y-1));   //ÁÂÇ¥
+
+		int red = color.getRed();
+
+		int blue = color.getBlue();
+
+		int green = color.getGreen();
+
+		int alpha = color.getBlue();
+
+
+		System.out.println("red : " + red);
+
+		System.out.println("blue : " + blue);
+
+		System.out.println("green : " + green);
+
+		System.out.println("alpha : " + alpha);
+
+		System.out.println("x : " + x+ ", y : " + y);
+		}
+
+
+
+
+public static BufferedImage loadImage(String url) {  
+
+    BufferedImage image = null;  
+
+    try {  
+
+        image = ImageIO.read(new File(url));  
+
+    } catch (IOException e) {  
+
+        e.printStackTrace();  
+
+    }  
+
+    return image;  
+    }
+}
